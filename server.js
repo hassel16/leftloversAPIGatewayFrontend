@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 
+app.use(basicAuth({
+    users: { 'admin': 'leftlovers' }
+}))
+
 app.use(express.static(__dirname + '/dist'));
 
 const forceSSL = function () {
