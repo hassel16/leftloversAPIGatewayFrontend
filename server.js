@@ -1,10 +1,5 @@
 const express = require("express");
 const app = express();
-const basicAuth = require('express-basic-auth');
-
-app.use(basicAuth({
-    users: { 'admin': 'leftlovers' }
-}))
 
 app.use(express.static(__dirname + '/dist'));
 
