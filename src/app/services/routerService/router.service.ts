@@ -15,18 +15,18 @@ export class RouterService {
   }
 
   testService(serviceName:String){
-    let url = `${Config.gatewayAddress}/${serviceName}/wakeup`;
+    let url = `${Config.gatewayAddress}/${serviceName}/health`;
     return this.http.get(url)
   }
 
   testServiceInstance(serviceName:String, serviceinstance:Serviceinstance){
-    let url = `${serviceinstance.serviceUrl}:${serviceinstance.servicePort}/${serviceName}/wakeup`;
+    let url = `${serviceinstance.serviceUrl}:${serviceinstance.servicePort}/${serviceName}/health`;
     return this.http.get(url)
   }
 
   testServiceList(serviceList:Servicelist){
     serviceList.serviceInstances.forEach(serviceInstances => {
-      let url = `${serviceInstances.serviceUrl}/${serviceList.serviceName}/Test`;
+      let url = `${serviceInstances.serviceUrl}/${serviceList.serviceName}/health`;
       return this.http.get(url)
     });
 
