@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<link rel="stylesheet" type="text/css" href="klassen.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Studentübersicht</title>
+  </head>
+  
+  <body> 
+  
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Studentenübersicht</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://sp-de-teams.nttdata-emea.com/DSC/SitePages/Homepage.aspx">Sharepoint</a>		
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./phasenuebersicht.html">Phasenübersicht</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Aktionen
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="./löschen.html">Löschen</a>
+          <a class="dropdown-item" href="./hinzufuegen.html">Hinzufügen</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Aktualisieren</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav> <br><br><br>
+
+	<div class="container-fluid">
+
+<h1>Studentenübersicht 2019</h1> <br>
+
+
+	<legend>Filter</legend>	
+	
+	<form>
+  <div class="row">
+    <div class="col-2">
+      <input type="text" class="form-control" placeholder="Vorname">
+    </div>
+    <div class="col-2">
+      <input type="text" class="form-control" placeholder="Nachname">
+    </div>
+	<div class="col-2">
+      <input type="number" class="form-control" placeholder="Semester">
+    </div>
+	<div class="col-2">
+      <input type="text" class="form-control" placeholder="Studiengang">
+    </div>
+	<div class="custom-control custom-radio custom-control-inline">
+  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+  <label class="custom-control-label" for="customRadioInline1">DH</label>
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+  <label class="custom-control-label" for="customRadioInline2">THM</label>
+</div>
+	<button type="submit" class="btn btn-primary">Suchen</button>
+  </div>
+</form>
+
+	
+	
+	
+	
+<br><br>
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Schule</th>
+      <th scope="col">Semester</th>
+	  <th scope="col">Jahrgang</th>
+      <th scope="col">KW 1</th>
+	  <th scope="col">KW 2</th>
+	  <th scope="col">KW 3</th>
+      <th scope="col">KW 4</th>
+	  <th scope="col">KW 5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Ali, Sazin</th>
+      <td>DH</td>
+      <td>1.</td>
+	  <td>2018</td>
+      <td div class="praxis_phase">Praxis</td>
+	  <td div class="praxis_phase">Praxis</td>
+	  <td div class="praxis_phase">Praxis</td>
+	  <td div class="praxis_phase">Praxis</td>
+	  <td div class="praxis_phase">Praxis</td>
+    </tr>
+    <tr>
+      <th scope="row">Breh, Celine</th>
+      <td>DH</td>
+      <td>1.</td>
+	  <td>2018</td>
+      <td div class="praxis_phase">Praxis</td>
+	  <td div class="praxis_phase">Praxis</td>
+	  <td div class="praxis_phase">Praxis</td>
+	  <td div class="praxis_phase">Praxis</td>
+	  <td div class="praxis_phase">Praxis</td>
+    </tr>
+    <tr>
+      <th scope="row">Sütterlin, Martin</th>
+      <td>DH</td>
+      <td>1.</td>
+	  <td>2018</td>
+      <td div class="praxis_phase">Praxis</td>
+	  <td div class="praxis_phase">Praxis</td>
+	  <td div class="praxis_phase">Praxis</td>
+	  <td div class="praxis_phase">Praxis</td>
+	  <td div class="praxis_phase">Praxis</td>
+    </tr>
+	<tr>
+      <th scope="row">XMustermann, Max</th>
+      <td>THM</td>
+      <td>4.</td>
+	  <td>2016</td>
+      <td div class="theorie_phase">Theorie</td>
+	  <td div class="theorie_phase">Theorie</td>
+	  <td div class="theorie_phase">Theorie</td>
+	  <td div class="theorie_phase">Theorie</td>
+	  <td div class="theorie_phase">Theorie</td>
+    </tr>
+  </tbody>
+</table>
+ 
+  </div>
+  
+  
+  
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
