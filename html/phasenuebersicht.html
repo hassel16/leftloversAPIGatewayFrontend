@@ -23,10 +23,11 @@
 <body>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#">Phasenübersicht</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -34,10 +35,11 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="https://sp-de-teams.nttdata-emea.com/DSC/SitePages/Homepage.aspx">Sharepoint</a>
-                                 
+
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aktionen</a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Aktionen</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Löschen</a>
             <a class="dropdown-item" href="#">Hinzufügen</a>
@@ -48,7 +50,7 @@
       </ul>
     </div>
   </nav><br><br>
-  
+
   <div class="container-fluid">
     <br>
 
@@ -86,29 +88,34 @@
 
     <legend>Geben Sie die Phasen ein, mit entsprechenden Zeiträumen!</legend>
 
+    <div class="row">
 
-    <div id="formIDStudiphase">
-      <form class="form-inline">
+      <div class="col" id="formIDStudiphase">
+        <form class="form-inline">
 
-        <select class="custom-select my-1 mr-sm-2" id="phasen">
-          <option selected>Auswaehlen..</option>
-          <option value="Praxis">Praxis</option>
-          <option value="Theorie">Theorie</option>
-        </select>
+          <select class="custom-select my-1 mr-sm-2" id="phasen">
+            <option selected>Auswaehlen..</option>
+            <option value="Praxis">Praxis</option>
+            <option value="Theorie">Theorie</option>
+          </select>
 
-        <fieldset>
-          <div>
-            <label for="startDatum">Start</label>
-            <input type="date" id="startDatum" name="trip" value="" min="2015-01-01" max="2080-12-31" />
-          </div>
+          <fieldset>
+            <div>
+              <label for="startDatum">Start</label>
+              <input type="date" id="startDatum" name="trip" value="" min="2015-01-01" max="2080-12-31" />
+            </div>
 
-          <div>
-            <label for="endDatum">Ende</label>
-            <input type="date" id="endDatum" name="trip" value="" min="2015-01-01" max="2080-12-31" />
-          </div>
-        </fieldset>
+            <div>
+              <label for="endDatum">Ende</label>
+              <input type="date" id="endDatum" name="trip" value="" min="2015-01-01" max="2080-12-31" />
+            </div>
+          </fieldset>
 
-      </form>
+        </form>
+      </div>
+      <div class = "col" id="UebersichtPhase">
+
+      </div>
     </div>
     <br>
 
@@ -121,7 +128,6 @@
 
   <p>
     <div id="ausgabe"></div>
-    <div id="ausgabePhase"></div>
   </p>
 
 </body>

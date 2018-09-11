@@ -64,6 +64,7 @@ function resetFormJahrgang() {
     $("#standort").val("");
     $("#anzahl").val("");
     $("input[name='hochschule']:checked").prop("checked", false);
+    $("#UebersichtPhase").html("");
 }
 
 function loescheAusarrayJahrgang(number) {
@@ -73,12 +74,7 @@ function loescheAusarrayJahrgang(number) {
 }
 
 function generiereStringForHTMLJahrgang() {
-    let stringForHtml = "";
-    for (let i = 0; i < arrayJahrgang.length; i++) {
-        stringForHtml = stringForHtml + arrayJahrgang[i].toString() + "  <Button onclick='loescheAusarrayJahrgang(" + i + ")'>Loeschen</Button>" + "<Button onclick='bearbeitenAusarrayJahrgang(" + i + ")'>Bearbeiten</Button>" + "<br>";
-    }
 
-    $("#ausgabe").html(stringForHtml);
 }
 
 function bearbeitenAusarrayJahrgang(number) {
@@ -168,12 +164,28 @@ function loescheAusarrayPhase(number) {
 }
 
 function generiereStringForHTMLPhase() {
-    let stringForHtmlPhase = "";
+    let stringForHtmlPhase = "<table class='table table-bordered'> \
+    <thead>\
+      <tr> \
+        <th scope='col'>Phasenart</th>\
+        <th scope='col'>Start</th>\
+        <th scope='col'>Ende</th>\
+        <th scope='col'>Bearbeiten</th>\
+        <th scope='col'>Löschen</th>\
+        </thead><tbody>";
     for (let i = 0; i < arrayPhase.length; i++) {
-        stringForHtmlPhase = stringForHtmlPhase + arrayPhase[i].toString() + "  <Button onclick='loescheAusarrayPhase(" + i + ")'>Loeschen</Button>" + "<Button onclick='bearbeitenAusarrayPhase(" + i + ")'>Bearbeiten</Button>" + "<br>";
+        stringForHtmlPhase+= "<tr>"
+        stringForHtmlPhase += "<td>" + arrayPhase[i].phasen + "</td>";
+        stringForHtmlPhase += "<td>" + arrayPhase[i].startDatum + "</td>";
+        stringForHtmlPhase += "<td>" + arrayPhase[i].endDatum + "</td>";
+        stringForHtmlPhase += "<td><Button class='btn btn-primary' onclick='bearbeitenAusarrayPhase(" + i + ")'>Bearbeiten</Button></td>";
+        stringForHtmlPhase += "<td><Button class='btn btn-primary' onclick='loescheAusarrayPhase(" + i + ")'>Loeschen</Button></td>";
+        //  <Button onclick='loescheAusarrayPhase(" + i + ")'>Loeschen</Button>" + "<Button onclick='bearbeitenAusarrayPhase(" + i + ")'>Bearbeiten</Button>" + "<br>";
+        stringForHtmlPhase+= "</tr>"
     }
+    stringForHtmlPhase+= "</tbody>"
 
-    $("#ausgabePhase").html(stringForHtmlPhase);
+    $("#UebersichtPhase").html(stringForHtmlPhase);
 }
 function generiereNeueForm() {
     let htmlforForm = "<form class='form-inline'> \
