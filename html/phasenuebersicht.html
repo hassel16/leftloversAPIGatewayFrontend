@@ -21,95 +21,40 @@
 </head>
 
 <body>
-
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Phasenübersicht</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="https://studentenuebersicht.herokuapp.com/?customRadioInline1=on#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sp-de-teams.nttdata-emea.com/DSC/SitePages/Homepage.aspx">Sharepoint</a>
+                                 
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aktionen</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Löschen</a>
+            <a class="dropdown-item" href="#">Hinzufügen</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Aktualisieren</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav><br><br>
+  
   <div class="container-fluid">
     <br>
 
     <legend>Tabelle der Daten für Praxisphasen und Theoriephasen</legend>
-
-
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">Schule</th>
-          <th scope="col">Studiengang</th>
-          <th scope="col">Jahrgang</th>
-          <th scope="col">Standort</th>
-          <th scope="col">Studenten</th>
-          <th scope="col">1. Phase</th>
-          <th scope="col">2. Phase</th>
-          <th scope="col">3. Phase</th>
-          <th scope="col">4. Phase</th>
-          <th scope="col">5. Phase</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>DH</th>
-          <td>WI</td>
-          <td>2018</td>
-          <td>Ettlingen</td>
-          <td>3</td>
-          <td>Theorie
-            <br>1.10.18 - 26.12.18</td>
-          <td>Praxis
-            <br>27.12.18 - 03.03.18</td>
-          <td>Theorie
-            <br>04.03.19 - 02.02.19</td>
-          <td>Praxis
-            <br>03.06.19 - 01.09.19</td>
-          <td>Theorie
-            <br>02.09.19 - 17.11.19</td>
-        </tr>
-        <tr>
-          <th>THM</th>
-          <td>ST</td>
-          <td>2018</td>
-          <td>Frankfurt</td>
-          <td>6</td>
-          <td>Praxis</td>
-          <td>Theorie</td>
-          <td>Praxis</td>
-          <td>Theorie</td>
-          <td>Praxis</td>
-        </tr>
-        <tr>
-          <th>DH</th>
-          <td>WI</td>
-          <td>2017</td>
-          <td>Ettlingen</td>
-          <td>4</td>
-          <td>Theorie
-            <br>01.10.17 - 24.12.17</td>
-          <td>Praxis
-            <br>25.12.17 - 04.03.18</td>
-          <td>Theorie
-            <br>05.03.18 - 03.06.18</td>
-          <td>Praxis
-            <br>04.06.18 - 02.09.18</td>
-          <td>Theorie
-            <br>03.09.18 - 18.11.18</td>
-        </tr>
-        <tr>
-          <th>THM</th>
-          <td>ST</td>
-          <td>2017</td>
-          <td>Frankfurt</td>
-          <td>5</td>
-          <td>Theorie
-            <br>04.10.17 - 11.02.18</td>
-          <td>Praxis
-            <br>12.02.18 - 08.04.18</td>
-          <td>Theorie
-            <br>09.04.18 - 29.07.18 </td>
-          <td>Praxis
-            <br>30.07.18 - 07.10.18</td>
-          <td>Theorie
-            <br>08.10.18 - 10.02.19</td>
-        </tr>
-      </tbody>
-    </table>
-
+    <div id="tableJahrgaenge">
+    </div>
     <legend>Bitte geben Sie die Daten der neuen Studentenjahrgänge ein!</legend>
 
 
@@ -124,7 +69,7 @@
         <input id="standort" type="text" class="form-control" placeholder="Standort">
       </div>
       <div class="col-2">
-        <input id="anzahl" type="number" min="0" max="10" class="form-control" placeholder="Anzahl der Studenten">
+        <input id="anzahl" type="number" min="1" max="20" class="form-control" placeholder="Anzahl der Studenten">
       </div>
 
       <div class="custom-control custom-control-inline">
@@ -144,23 +89,6 @@
 
     <div id="formIDStudiphase">
       <form class="form-inline">
-        <select class="custom-select my-1 mr-sm-2" id="numerierung">
-          <option selected>Phasenanzahl</option>
-          <option value="1. Phase">1. Phase</option>
-          <option value="2. Phase">2. Phase</option>
-          <option value="3. Phase"> 3. Phase </option>
-          <option value="4. Phase">4. Phase</option>
-          <option value="5. Phase">5. Phase</option>
-          <option value="6. Phase"> 6. Phase </option>
-          <option value="7. Phase">7. Phase</option>
-          <option value="8. Phase">8. Phase</option>
-          <option value="9. Phase"> 9. Phase </option>
-          <option value="10. Phase">10. Phase</option>
-          <option value="11. Phase">11. Phase</option>
-          <option value="12. Phase"> 12. Phase </option>
-          <option value="13. Phase">13. Phase</option>
-          <option value="14. Phase"> 14. Phase </option>
-        </select>
 
         <select class="custom-select my-1 mr-sm-2" id="phasen">
           <option selected>Auswaehlen..</option>

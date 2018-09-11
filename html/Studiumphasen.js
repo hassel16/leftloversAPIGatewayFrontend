@@ -6,24 +6,24 @@ class Jahrgangneu {
         this.standort = standort;
         this.anzahl = anzahl;
         this.hochschule = hochschule;
+        this.studienphasen = new Array();
 
     }
 
     toString() {
-        return (this.studiengang + " " + this.jahrgang + " " + this.standort + " " + this.anzahl + " " + this.hochschule + ".");
+        return (this.studiengang + " " + this.jahrgang + " " + this.standort + " " + this.anzahl + " " + this.hochschule + this.studienphasen + ".");
     }
 }
 
 class Phase {
-    constructor(numerierung, phasen, startDatum, endDatum) {
-        this.numerierung = numerierung;
+    constructor(phasen, startDatum, endDatum) {
         this.phasen = phasen;
         this.startDatum = startDatum;
         this.endDatum = endDatum;
     }
 
     toString() {
-        return (this.numerierung+ " " +this.phasen + " " + this.startDatum + " " + this.endDatum + ".");
+        return (this.phasen + " " + this.startDatum + " " + this.endDatum + "");
     }
 }
 
@@ -31,10 +31,17 @@ let arrayJahrgang = new Array();
 let arrayPhase = new Array();
 
 function jahrgangHinzufuegen() {
-    let jahrgangneu = auslesenUndJahrgangErzeugen();
-    arrayJahrgang.push(jahrgangneu);
-    resetFormJahrgang();
-    generiereStringForHTMLJahrgang();
+    if (auslesenUndJahrgangErzeugen() != false) {
+        let jahrgangneu = auslesenUndJahrgangErzeugen();
+        jahrgangneu.studienphasen = arrayPhase;
+        arrayPhase = new Array();
+        arrayJahrgang.push(jahrgangneu);
+        resetFormJahrgang();
+        generiereUebersichtstabelle();
+        generiereStringForHTMLJahrgang();
+    } else {
+        alert("Fehlerhafte Eingabe! Bitte überprüfen");
+    }
 }
 
 function auslesenUndJahrgangErzeugen() {
@@ -43,6 +50,10 @@ function auslesenUndJahrgangErzeugen() {
     let txtfeldStandort = $("#standort").val();
     let txtfeldAnzahl = $("#anzahl").val();
     let boxSchule = $("input[name='hochschule']:checked").val();
+
+    if (txtfeldStudiengang == "" || txtfeldJahrgang == "" || txtfeldStandort == "" || txtfeldAnzahl == "" || boxSchule == undefined) {
+        return false;
+    }
 
     let jahrgangneu = new Jahrgangneu(txtfeldStudiengang, txtfeldJahrgang, txtfeldStandort, txtfeldAnzahl, boxSchule);
     return jahrgangneu;
@@ -89,43 +100,49 @@ function setButtons(value) {
 }
 
 function bearbeitungSpeichernJahrgang(number) {
-    let jahrgangneu = auslesenUndJahrgangErzeugen();
-    arrayJahrgang[number] = jahrgangneu;
-    resetFormJahrgang();
-    $("#buttons").html("<button onclick='jahrgangHinzufuegen()' class='btn btn-primary'>Jahrgang hinzufuegen</button>" + " " + "<button onclick='phaseHinzufuegen' class='btn btn-primary'>Phase hinzufuegen</button>");
-    generiereStringForHTML();
+    if (auslesenUndJahrgangErzeugen() != false) {
+        let jahrgangneu = auslesenUndJahrgangErzeugen();
+        arrayJahrgang[number] = jahrgangneu;
+        resetFormJahrgang();
+        $("#buttons").html("<button onclick='jahrgangHinzufuegen()' class='btn btn-primary'>Jahrgang hinzufuegen</button>" + " " + "<button onclick='phaseHinzufuegen' class='btn btn-primary'>Phase hinzufuegen</button>");
+        generiereStringForHTMLJahrgang();
+    } else {
+        alert("Fehlerhafte Eingabe! Bitte überprüfen!");
+    }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function phaseHinzufuegen() {
-    let phase = auslesenUndPhaseErzeugen();
-    arrayPhase.push(phase);
-    resetFormPhase();
-    generiereStringForHTMLPhase();
-
+    if (auslesenUndPhaseErzeugen() != false) {
+        let phase = auslesenUndPhaseErzeugen();
+        arrayPhase.push(phase);
+        resetFormPhase();
+        generiereStringForHTMLPhase();
+    } else {
+        alert("Fehlerhafte Eingabe! Bitte überprüfen!");
+    }
 }
 
 function auslesenUndPhaseErzeugen() {
-    let txtfeldNumerierung = $("#numerierung").val();
     let txtfeldPhase = $("#phasen").val();
     let txtfeldStart = $("#startDatum").val();
     let txtfeldEnde = $("#endDatum").val();
 
-    let phase = new Phase(txtfeldNumerierung, txtfeldPhase, txtfeldStart, txtfeldEnde);
+    if (txtfeldPhase == "" || txtfeldStart == "" || txtfeldEnde == "") {
+        return false;
+    }
+
+    let phase = new Phase(txtfeldPhase, txtfeldStart, txtfeldEnde);
     return phase;
 }
 
 function resetFormPhase() {
-    $("#numerierung").val("");
-    $("#phasen").val("");
-    $("#startDatum").val("");
-    $("#endDatum").val("");
+    $("#formIDStudiphase").html(generiereNeueForm());
 }
 
 function bearbeitenAusarrayPhase(number) {
     let phase = new Phase();
     phase = arrayPhase[number];
 
-    $("#numerierung").val(phase.numerierung);
     $("#phasen").val(phase.phasen);
     $("#startDatum").val(phase.startDatum);
     $("#endDatum").val(phase.endDatum);
@@ -134,11 +151,15 @@ function bearbeitenAusarrayPhase(number) {
 }
 
 function bearbeitungSpeichernPhase(number) {
-    let phase = auslesenUndPhaseErzeugen();
-    arrayPhase[number] = phase;
-    resetFormPhase();
-    $("#buttons").html("<button onclick='jahrgangHinzufuegen()' class='btn btn-primary'>Jahrgang hinzufuegen</button>" + " " + "<button onclick='phaseHinzufuegen' class='btn btn-primary'>Phase hinzufuegen</button>");
-    generiereStringForHTMLPhase();
+    if (auslesenUndPhaseErzeugen() != false) {
+        let phase = auslesenUndPhaseErzeugen();
+        arrayPhase[number] = phase;
+        resetFormPhase();
+        $("#buttons").html("<button onclick='jahrgangHinzufuegen()' class='btn btn-primary'>Jahrgang hinzufuegen</button>" + " " + "<button onclick='phaseHinzufuegen' class='btn btn-primary'>Phase hinzufuegen</button>");
+        generiereStringForHTMLPhase();
+    } else {
+        alert("Fehlerhafte Eingabe! Bitte überprüfen!");
+    }
 }
 function loescheAusarrayPhase(number) {
     arrayPhase.splice(number, 1);
@@ -153,4 +174,70 @@ function generiereStringForHTMLPhase() {
     }
 
     $("#ausgabePhase").html(stringForHtmlPhase);
+}
+function generiereNeueForm() {
+    let htmlforForm = "<form class='form-inline'> \
+<select class='custom-select my-1 mr-sm-2' id='phasen' >\
+  <option selected>Auswaehlen..</option>\
+  <option value='Praxis'>Praxis</option>\
+  <option value='Theorie'>Theorie</option>\
+</select>\
+<fieldset>\
+  <div>\
+    <label for='startDatum'>Start</label>\
+    <input type='date' id='startDatum' name='trip' value='' min='2015-01-01' max='2080-12-31' />\
+  </div>\
+  <div>\
+    <label for='endDatum'>Ende</label>\
+    <input type='date' id='endDatum' name='trip' value='' min='2015-01-01' max='2080-12-31' />\
+  </div>\
+</fieldset>";
+    return htmlforForm;
+}
+
+
+function generiereUebersichtstabelle() {
+    let htmlAsString = "<table class='table table-bordered'> \
+    <thead>\
+      <tr> \
+        <th scope='col'>Schule</th>\
+        <th scope='col'>Studiengang</th>\
+        <th scope='col'>Jahrgang</th>\
+        <th scope='col'>Standort</th>\
+        <th scope='col'>Studenten</th>";
+    //Speicher größte Anzahl Phasen eines Studiengangs
+    let cacheSize = 0;
+    for (let counter = 0; counter < arrayJahrgang.length; counter++) {
+        if (cacheSize < arrayJahrgang[counter].studienphasen.length) {
+            cacheSize = arrayJahrgang[counter].studienphasen.length;
+        }
+    }
+    for (let counterPhasen = 1; counterPhasen <= cacheSize; counterPhasen++) {
+        htmlAsString = htmlAsString + "<th scope='col'>" + counterPhasen + ". Phase</th>";
+    }
+    htmlAsString = htmlAsString +  "</tr > </thead >";
+//Bis hierhin ist die überschrift
+
+
+    htmlAsString = htmlAsString + "<tbody>";
+    for(let counter = 0; counter < arrayJahrgang.length; counter++){
+        let jahrgang = new Jahrgangneu(arrayJahrgang[counter].studiengang,arrayJahrgang[counter].jahrgang,arrayJahrgang[counter].standort,arrayJahrgang[counter].anzahl,arrayJahrgang[counter].hochschule);
+        jahrgang.studienphasen= arrayJahrgang[counter].studienphasen;
+
+        //htmlAsString+="<tr>" gleich htmlAsString = htmlAsString +"<tr>"
+        htmlAsString+= "<tr>";
+        htmlAsString+= "<th>"+ jahrgang.hochschule + "</th>";
+        htmlAsString+= "<td>"+ jahrgang.studiengang+ "</td>";
+        htmlAsString+= "<td>"+ jahrgang.jahrgang+ "</td>";
+        htmlAsString+= "<td>"+ jahrgang.standort+ "</td>";
+        htmlAsString+= "<td>"+ jahrgang.anzahl+ "</td>";
+        for(let counterPhasenFromJahrgang = 0; counterPhasenFromJahrgang < jahrgang.studienphasen.length; counterPhasenFromJahrgang++){
+            htmlAsString+= "<td>" + jahrgang.studienphasen[counterPhasenFromJahrgang].phasen + "<br>" +jahrgang.studienphasen[counterPhasenFromJahrgang].startDatum + " - " + jahrgang.studienphasen[counterPhasenFromJahrgang].endDatum +"</td>";
+        }
+        htmlAsString+= "</tr>";
+    }
+    htmlAsString+="</tbody></table>";
+
+    $("#tableJahrgaenge").html(htmlAsString);
+
 }

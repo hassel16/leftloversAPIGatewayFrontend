@@ -18,13 +18,18 @@ let array= new Array();
 
 function TestAuslesen(){ 
 
-    let student = auslesenUndStudentErzeugen(); 
+    if(auslesenUndStudentErzeugen() != false){
+        let student = auslesenUndStudentErzeugen(); 
     
-    array.push(student); 
+        array.push(student); 
+    
+        resetForm(); 
+    
+        generiereStringForHTML(); 
+    }else{
+        alert("Fehlerhafte Eingabe! Bitte überprüfen!");
+    }
 
-    resetForm(); 
-
-    generiereStringForHTML(); 
 }
 
 function auslesenUndStudentErzeugen(){
@@ -34,6 +39,10 @@ function auslesenUndStudentErzeugen(){
     let boxSchule=$("input[name='hochschule']:checked").val();
     let txtfeldStudiengang=$("#studiengang").val();
     let txtfeldSemester=$("#semester").val();
+    
+    if (txtfeldName == "" || txtfeldVorname == "" || txtfeldStandort == "" || boxSchule == undefined || txtfeldStudiengang == "" || txtfeldSemester == ""){
+        return false;
+    }
 
     let student = new Student(txtfeldName, txtfeldVorname, boxSchule,txtfeldStandort,  txtfeldStudiengang, txtfeldSemester);
     return student;
@@ -83,9 +92,13 @@ function setButtons(value){
 
 
 function bearbeitungSpeichern(number){
+    if(auslesenUndStudentErzeugen() != false){
     let student = auslesenUndStudentErzeugen();
     array[number] = student;
     resetForm();
     $("#buttons").html("<button onclick='TestAuslesen()' class='btn btn-primary'>Student hinzufuegen</button>");
     generiereStringForHTML();
+    }else{
+        alert("Fehlerhafte Eingabe! Bitte überprüfen!")
+    }
 }
