@@ -20,6 +20,26 @@ class Phase {
         this.phasen = phasen;
         this.startDatum = startDatum;
         this.endDatum = endDatum;
+        this.startKW  =  this.berechneWochen(startDatum);
+        this.endKW  =  this.berechneWochen(endDatum);
+    }
+
+    berechneWochen(datumErsatz) {
+        let a = datumErsatz.split("-")
+        let  datum = new Date(datumErsatz);
+
+        let  jh = datum.getFullYear() + 1;
+        let  kalwo = this.kaldiff(datum, jh);
+        while (kalwo < 1) {  jh--;  kalwo = this.kaldiff(datum, jh); }
+        return  kalwo;
+    }
+
+    kaldiff(datum, jahr) {
+        let  d4j = new  Date(jahr, 0, 4);
+        let  wt4j = (d4j.getDay() + 6) % 7;
+        let  m1wjT = Math.floor(0.01 + d4j.getTime() / 864e5 - wt4j);
+        let  datumT = Math.floor(0.01 + datum.getTime() / 864e5);
+        return  Math.floor(1 + (datumT - m1wjT) / 7);
     }
 
     toString() {
@@ -170,20 +190,24 @@ function generiereStringForHTMLPhase() {
         <th scope='col'>Phasenart</th>\
         <th scope='col'>Start</th>\
         <th scope='col'>Ende</th>\
+        <th scope='col'>Start-KW</th>\
+        <th scope='col'>End-KW</th>\
         <th scope='col'>Bearbeiten</th>\
         <th scope='col'>Löschen</th>\
         </thead><tbody>";
     for (let i = 0; i < arrayPhase.length; i++) {
-        stringForHtmlPhase+= "<tr>"
+        stringForHtmlPhase += "<tr>"
         stringForHtmlPhase += "<td>" + arrayPhase[i].phasen + "</td>";
         stringForHtmlPhase += "<td>" + arrayPhase[i].startDatum + "</td>";
         stringForHtmlPhase += "<td>" + arrayPhase[i].endDatum + "</td>";
+        stringForHtmlPhase += "<td>" + arrayPhase[i].startKW + "</td>";
+        stringForHtmlPhase += "<td>" + arrayPhase[i].endKW + "</td>";
         stringForHtmlPhase += "<td><Button class='btn btn-primary' onclick='bearbeitenAusarrayPhase(" + i + ")'>Bearbeiten</Button></td>";
         stringForHtmlPhase += "<td><Button class='btn btn-primary' onclick='loescheAusarrayPhase(" + i + ")'>Loeschen</Button></td>";
         //  <Button onclick='loescheAusarrayPhase(" + i + ")'>Loeschen</Button>" + "<Button onclick='bearbeitenAusarrayPhase(" + i + ")'>Bearbeiten</Button>" + "<br>";
-        stringForHtmlPhase+= "</tr>"
+        stringForHtmlPhase += "</tr>"
     }
-    stringForHtmlPhase+= "</tbody>"
+    stringForHtmlPhase += "</tbody>"
 
     $("#UebersichtPhase").html(stringForHtmlPhase);
 }
@@ -227,28 +251,28 @@ function generiereUebersichtstabelle() {
     for (let counterPhasen = 1; counterPhasen <= cacheSize; counterPhasen++) {
         htmlAsString = htmlAsString + "<th scope='col'>" + counterPhasen + ". Phase</th>";
     }
-    htmlAsString = htmlAsString +  "</tr > </thead >";
-//Bis hierhin ist die überschrift
+    htmlAsString = htmlAsString + "</tr > </thead >";
+    //Bis hierhin ist die überschrift
 
 
     htmlAsString = htmlAsString + "<tbody>";
-    for(let counter = 0; counter < arrayJahrgang.length; counter++){
-        let jahrgang = new Jahrgangneu(arrayJahrgang[counter].studiengang,arrayJahrgang[counter].jahrgang,arrayJahrgang[counter].standort,arrayJahrgang[counter].anzahl,arrayJahrgang[counter].hochschule);
-        jahrgang.studienphasen= arrayJahrgang[counter].studienphasen;
+    for (let counter = 0; counter < arrayJahrgang.length; counter++) {
+        let jahrgang = new Jahrgangneu(arrayJahrgang[counter].studiengang, arrayJahrgang[counter].jahrgang, arrayJahrgang[counter].standort, arrayJahrgang[counter].anzahl, arrayJahrgang[counter].hochschule);
+        jahrgang.studienphasen = arrayJahrgang[counter].studienphasen;
 
         //htmlAsString+="<tr>" gleich htmlAsString = htmlAsString +"<tr>"
-        htmlAsString+= "<tr>";
-        htmlAsString+= "<th>"+ jahrgang.hochschule + "</th>";
-        htmlAsString+= "<td>"+ jahrgang.studiengang+ "</td>";
-        htmlAsString+= "<td>"+ jahrgang.jahrgang+ "</td>";
-        htmlAsString+= "<td>"+ jahrgang.standort+ "</td>";
-        htmlAsString+= "<td>"+ jahrgang.anzahl+ "</td>";
-        for(let counterPhasenFromJahrgang = 0; counterPhasenFromJahrgang < jahrgang.studienphasen.length; counterPhasenFromJahrgang++){
-            htmlAsString+= "<td>" + jahrgang.studienphasen[counterPhasenFromJahrgang].phasen + "<br>" +jahrgang.studienphasen[counterPhasenFromJahrgang].startDatum + " - " + jahrgang.studienphasen[counterPhasenFromJahrgang].endDatum +"</td>";
+        htmlAsString += "<tr>";
+        htmlAsString += "<th>" + jahrgang.hochschule + "</th>";
+        htmlAsString += "<td>" + jahrgang.studiengang + "</td>";
+        htmlAsString += "<td>" + jahrgang.jahrgang + "</td>";
+        htmlAsString += "<td>" + jahrgang.standort + "</td>";
+        htmlAsString += "<td>" + jahrgang.anzahl + "</td>";
+        for (let counterPhasenFromJahrgang = 0; counterPhasenFromJahrgang < jahrgang.studienphasen.length; counterPhasenFromJahrgang++) {
+            htmlAsString += "<td>" + jahrgang.studienphasen[counterPhasenFromJahrgang].phasen + "<br>" + jahrgang.studienphasen[counterPhasenFromJahrgang].startDatum + " - " + jahrgang.studienphasen[counterPhasenFromJahrgang].endDatum + "</td>";
         }
-        htmlAsString+= "</tr>";
+        htmlAsString += "</tr>";
     }
-    htmlAsString+="</tbody></table>";
+    htmlAsString += "</tbody></table>";
 
     $("#tableJahrgaenge").html(htmlAsString);
 
