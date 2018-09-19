@@ -1,17 +1,15 @@
 "use strict";
 class Jahrgangneu {
-    constructor(studiengang, jahrgang, standort, anzahl, hochschule) {
+    constructor(studiengang, jahrgang, hochschule) {
         this.studiengang = studiengang;
         this.jahrgang = jahrgang;
-        this.standort = standort;
-        this.anzahl = anzahl;
         this.hochschule = hochschule;
         this.studienphasen = new Array();
 
     }
 
     toString() {
-        return (this.studiengang + " " + this.jahrgang + " " + this.standort + " " + this.anzahl + " " + this.hochschule + this.studienphasen + ".");
+        return (this.studiengang + " " + this.jahrgang + " " + this.hochschule + this.studienphasen + ".");
     }
 }
 
@@ -20,12 +18,14 @@ class Phase {
         this.phasen = phasen;
         this.startDatum = startDatum;
         this.endDatum = endDatum;
-        this.startKW  =  this.berechneWochen(startDatum);
-        this.endKW  =  this.berechneWochen(endDatum);
+        if(startDatum !=undefined || endDatum !=undefined){
+            this.startKW  =  this.berechneWochen(startDatum);
+            this.endKW  =  this.berechneWochen(endDatum);
+        }
+
     }
 
     berechneWochen(datumErsatz) {
-        let a = datumErsatz.split("-")
         let  datum = new Date(datumErsatz);
 
         let  jh = datum.getFullYear() + 1;
@@ -67,22 +67,18 @@ function jahrgangHinzufuegen() {
 function auslesenUndJahrgangErzeugen() {
     let txtfeldStudiengang = $("#studiengang").val();
     let txtfeldJahrgang = $("#jahrgang").val();
-    let txtfeldStandort = $("#standort").val();
-    let txtfeldAnzahl = $("#anzahl").val();
     let boxSchule = $("input[name='hochschule']:checked").val();
 
-    if (txtfeldStudiengang == "" || txtfeldJahrgang == "" || txtfeldStandort == "" || txtfeldAnzahl == "" || boxSchule == undefined) {
+    if (txtfeldStudiengang == "" || txtfeldJahrgang == "" || boxSchule == undefined) {
         return false;
     }
 
-    let jahrgangneu = new Jahrgangneu(txtfeldStudiengang, txtfeldJahrgang, txtfeldStandort, txtfeldAnzahl, boxSchule);
+    let jahrgangneu = new Jahrgangneu(txtfeldStudiengang, txtfeldJahrgang, boxSchule);
     return jahrgangneu;
 }
 function resetFormJahrgang() {
     $("#studiengang").val("");
     $("#jahrgang").val("");
-    $("#standort").val("");
-    $("#anzahl").val("");
     $("input[name='hochschule']:checked").prop("checked", false);
     $("#UebersichtPhase").html("");
 }
@@ -103,8 +99,6 @@ function bearbeitenAusarrayJahrgang(number) {
 
     $("#studiengang").val(jahrgangneu.studiengang);
     $("#jahrgang").val(jahrgangneu.jahrgang);
-    $("#standort").val(jahrgangneu.standort);
-    $("#anzahl").val(jahrgangneu.anzahl);
     $("input[name='hochschule'][value='" + jahrgangneu.hochschule + "']").prop("checked", true);
 
     $("#buttons").html(" <Button onclick='bearbeitungSpeichernJahrgang(" + number + ")'>Speichern</Button>");
@@ -163,7 +157,7 @@ function bearbeitenAusarrayPhase(number) {
     $("#startDatum").val(phase.startDatum);
     $("#endDatum").val(phase.endDatum);
 
-    $("#buttons").html(" <Button onclick='bearbeitungSpeichernPhase(" + number + ")'>Speichern</Button>");
+    $("#buttons").html(" <Button onclick='bearbeitungSpeichernPhase(" + number + ")' class='btn btn-primary'>Speichern</Button>");
 }
 
 function bearbeitungSpeichernPhase(number) {
@@ -238,9 +232,7 @@ function generiereUebersichtstabelle() {
       <tr> \
         <th scope='col'>Schule</th>\
         <th scope='col'>Studiengang</th>\
-        <th scope='col'>Jahrgang</th>\
-        <th scope='col'>Standort</th>\
-        <th scope='col'>Studenten</th>";
+        <th scope='col'>Jahrgang</th>";
     //Speicher größte Anzahl Phasen eines Studiengangs
     let cacheSize = 0;
     for (let counter = 0; counter < arrayJahrgang.length; counter++) {
@@ -257,7 +249,7 @@ function generiereUebersichtstabelle() {
 
     htmlAsString = htmlAsString + "<tbody>";
     for (let counter = 0; counter < arrayJahrgang.length; counter++) {
-        let jahrgang = new Jahrgangneu(arrayJahrgang[counter].studiengang, arrayJahrgang[counter].jahrgang, arrayJahrgang[counter].standort, arrayJahrgang[counter].anzahl, arrayJahrgang[counter].hochschule);
+        let jahrgang = new Jahrgangneu(arrayJahrgang[counter].studiengang, arrayJahrgang[counter].jahrgang, arrayJahrgang[counter].hochschule);
         jahrgang.studienphasen = arrayJahrgang[counter].studienphasen;
 
         //htmlAsString+="<tr>" gleich htmlAsString = htmlAsString +"<tr>"
@@ -265,8 +257,6 @@ function generiereUebersichtstabelle() {
         htmlAsString += "<th>" + jahrgang.hochschule + "</th>";
         htmlAsString += "<td>" + jahrgang.studiengang + "</td>";
         htmlAsString += "<td>" + jahrgang.jahrgang + "</td>";
-        htmlAsString += "<td>" + jahrgang.standort + "</td>";
-        htmlAsString += "<td>" + jahrgang.anzahl + "</td>";
         for (let counterPhasenFromJahrgang = 0; counterPhasenFromJahrgang < jahrgang.studienphasen.length; counterPhasenFromJahrgang++) {
             htmlAsString += "<td>" + jahrgang.studienphasen[counterPhasenFromJahrgang].phasen + "<br>" + jahrgang.studienphasen[counterPhasenFromJahrgang].startDatum + " - " + jahrgang.studienphasen[counterPhasenFromJahrgang].endDatum + "</td>";
         }

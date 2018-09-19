@@ -90,6 +90,11 @@ function setButtons(value){
     $(`#${value}`).prop("checked",true);
 }
 
+function setButtons2(value){
+    $("input[name='hochschule2']:checked").prop("checked",false);
+    $(`#${value}`).prop("checked",true);
+}
+
 
 function bearbeitungSpeichern(number){
     if(auslesenUndStudentErzeugen() != false){

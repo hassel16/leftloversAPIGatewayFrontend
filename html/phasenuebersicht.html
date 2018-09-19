@@ -22,7 +22,7 @@
 
 <body>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Phasenübersicht</a>
+    <a class="navbar-brand" href="#">Studentenuebersicht</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -31,21 +31,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="https://studentenuebersicht.herokuapp.com/?customRadioInline1=on#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="./Studentuebersicht.html">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="https://sp-de-teams.nttdata-emea.com/DSC/SitePages/Homepage.aspx">Sharepoint</a>
 
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Aktionen</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Löschen</a>
-            <a class="dropdown-item" href="#">Hinzufügen</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Aktualisieren</a>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sp-de-teams.nttdata-emea.com/DSC/SitePages/Homepage.aspx">Phasenuebersicht</a>
+
         </li>
       </ul>
     </div>
@@ -57,6 +51,7 @@
     <legend>Tabelle der Daten für Praxisphasen und Theoriephasen</legend>
     <div id="tableJahrgaenge">
     </div>
+    <br>
     <legend>Bitte geben Sie die Daten der neuen Studentenjahrgänge ein!</legend>
 
 
@@ -66,12 +61,6 @@
       </div>
       <div class="col-2">
         <input id="jahrgang" type="text" class="form-control" placeholder="Jahrgang">
-      </div>
-      <div class="col-2">
-        <input id="standort" type="text" class="form-control" placeholder="Standort">
-      </div>
-      <div class="col-2">
-        <input id="anzahl" type="number" min="1" max="20" class="form-control" placeholder="Anzahl der Studenten">
       </div>
 
       <div class="custom-control custom-control-inline">
