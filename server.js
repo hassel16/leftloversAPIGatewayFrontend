@@ -5,7 +5,7 @@ const path = require('path');
 app.use(express.static(__dirname + '/html'));
 
 app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/html/Studentübersicht.html'));
+    res.sendFile(path.join(__dirname + '/html/Studentuebersicht.html'));
 });
 
 // Initialize the app.
