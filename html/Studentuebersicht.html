@@ -17,13 +17,13 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
     <script type="text/javascript" src="Student.js"></script>
-  <title>Studentuebersicht</title>
+  <title>Studentübersicht</title>
 </head>
 
 <body>
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Studentenuebersicht</a>
+    <a class="navbar-brand" href="#">Studentenübersicht</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -32,16 +32,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home
-            <span class="sr-only">(current)</span>
-          </a>
+          <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="https://sp-de-teams.nttdata-emea.com/DSC/SitePages/Homepage.aspx">Sharepoint</a>
           <li class="nav-item">
-            <a class="nav-link" href="./phasenuebersicht.html">Phasenuebersicht</a>
-
-          </li>
+            <a class="nav-link" href="./phasenuebersicht.html">Phasenübersicht</a>
+        </li>
 
       </ul>
     </div>
@@ -52,7 +49,7 @@
 
   <div class="container-fluid">
 
-    <h1>Studentenuebersicht</h1>
+    <h1>Studentenübersicht</h1>
     <br>
 
 
@@ -61,26 +58,27 @@
     <form>
       <div class="row">
         <div class="col-2">
-          <input type="text" class="form-control" placeholder="Name">
+          <input id="nameFilter" type="text" class="form-control" placeholder="Name">
         </div>
         <div class="col-2">
-          <input type="text" class="form-control" placeholder="Nachname">
+          <input id="vornameFilter" type="text" class="form-control" placeholder="Vorname">
         </div>
         <div class="col-2">
-          <input type="number" class="form-control" placeholder="Semester">
+          <input id="semesterFilter" type="number" class="form-control" placeholder="Semester">
         </div>
         <div class="col-2">
-          <input type="text" class="form-control" placeholder="Jahrgang">
+          <input id="jahrgangFilter" type="text" class="form-control" placeholder="Jahrgang">
         </div>
-        <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-          <label class="custom-control-label" for="customRadioInline1">DH</label>
+        <div class="custom-control custom-control-inline">
+          <input type="checkbox" id="customRadioInline1Filter" onclick="setButtons2('customRadioInline1Filter')" name="hochschule2" value="DH" class="custom-control-input">
+          <label class="custom-control-label" for="customRadioInline1Filter">DH</label>
         </div>
-        <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-          <label class="custom-control-label" for="customRadioInline2">THM</label>
+        <div class="custom-control custom-control-inline">
+          <input type="checkbox" id="customRadioInline2Filter" onclick="setButtons2('customRadioInline2Filter')" name="hochschule2" value="THM" class="custom-control-input">
+          <label class="custom-control-label" for="customRadioInline2Filter">THM</label>
         </div>
-        <button type="submit" class="btn btn-primary">Suchen</button>
+
+        <button id="buttonFilter" type="submit" class="btn btn-primary">Suchen</button>
       </div>
     </form>
 
@@ -218,180 +216,62 @@
           <td>DH</td>
           <td>1.</td>
           <td>2018</td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="#"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
           <td class="praxis_phase"></td>
         </tr>
         <tr>
           <th scope="row">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#steckbrief1">Breh, Celine</button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="steckbrief1" tabindex="-1" role="dialog" aria-labelledby="steckbrieff1Label" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="steckbreif1Label">Steckbrief</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-content">
-
-                    <table class="table table-bordered table-striped table-dark bg-primary">
-
-                      <tr>
-                        <th scope="col">Nachname</th>
-                        <td scope="col">Breh</td>
-                      </tr>
-
-
-                      <tr>
-                        <th scope="row">Vorname</th>
-                        <td>Celine</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Standort</th>
-                        <td>Ettlingen</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Schule</th>
-                        <td>DH</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Studiengang</th>
-                        <td>Wirtschaftsinformatik</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Semester</th>
-                        <td>1.</td>
-                      </tr>
-                      <tr>
-                        <th scope="col">Jahrgang</th>
-                        <td scope="col">2018</td>
-
-                      </tr>
-
-                    </table>
-
-
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary">Bearbeiten</button>
-                    <button type="button" class="btn btn-secondary">Löschen</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </th>
-          <td>DH</td>
-          <td>1.</td>
-          <td>2018</td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#steckbrief3">Sütterlin, Martin</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#steckbrief3">Mustermann, Max</button>
 
             <!-- Modal -->
             <div class="modal fade" id="steckbrief3" tabindex="-1" role="dialog" aria-labelledby="steckbrief3Label" aria-hidden="true">
@@ -409,14 +289,14 @@
 
                       <tr>
                         <th scope="col">Nachname</th>
-                        <td scope="col">Sütterlin</td>
+                        <td scope="col">Mustermann</td>
 
                       </tr>
 
 
                       <tr>
                         <th scope="row">Vorname</th>
-                        <td>Martin</td>
+                        <td>Max</td>
                       </tr>
                       <tr>
                         <th scope="row">Standort</th>
@@ -432,11 +312,11 @@
                       </tr>
                       <tr>
                         <th scope="row">Semester</th>
-                        <td>1.</td>
+                        <td>3.</td>
                       </tr>
                       <tr>
                         <th scope="col">Jahrgang</th>
-                        <td scope="col">2018</td>
+                        <td scope="col">2017</td>
 
                       </tr>
 
@@ -454,8 +334,30 @@
           </th>
 
           <td>DH</td>
-          <td>1.</td>
-          <td>2018</td>
+          <td>3.</td>
+          <td>2017</td>
+          <td class="praxis_phase"></td>
+          <td class="praxis_phase"></td>
+          <td class="praxis_phase"></td>
+          <td class="praxis_phase"></td>
+          <td class="praxis_phase"></td>
+          <td class="praxis_phase"></td>
+          <td class="praxis_phase"></td>
+          <td class="praxis_phase"></td>
+          <td class="praxis_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
           <td class="praxis_phase"></td>
           <td class="praxis_phase"></td>
           <td class="praxis_phase"></td>
@@ -469,39 +371,17 @@
           <td class="praxis_phase"></td>
           <td class="praxis_phase"></td>
           <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
-          <td class="praxis_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
+          <td class="theorie_phase"></td>
           <td class="praxis_phase"></td>
           <td class="praxis_phase"></td>
           <td class="praxis_phase"></td>
@@ -513,53 +393,52 @@
     </table>
 
   </div>
-  <div class="container-fluid">
+  
     <br>
 
     <legend>Bitte geben Sie die Daten des neuen Studenten ein!</legend>
     <br>
 
-    <div class="row">
+    
+    <div class="form-row align-items-center">
 
-      <div class="col-2">
+      <div class="col-auto my-1">
         <input id="name" type="text" class="form-control" placeholder="Name">
       </div>
 
-      <div class="col-2">
+      <div class="col-auto my-1">
         <input id="vorname" type="text" class="form-control" placeholder="Vorname">
       </div>
 
-      <div class="col-2">
+      <div class="col-auto my-1">
         <input id="standort" type="text" class="form-control" placeholder="Standort">
       </div>
-      <div class="col-2">
+      <div class="col-auto my-1">
         <input id="studiengang" type="text" class="form-control" placeholder="Studiengang">
       </div>
 
-      <div class="col-2">
-        <input id="semester" type="number" min="1" max="7" class="form-control" placeholder="Semester">
+      <div class="col-auto my-1">
+        <input id="semester" type="number" min="1" max="7" class="form-control" placeholder="Sem.">
       </div>
 
       <div class="custom-control custom-control-inline">
-        <input type="checkbox" id="customRadioInline3" onclick="setButtons2('customRadioInline3')" name="hochschule2" value="DH" class="custom-control-input">
-        <label class="custom-control-label" for="customRadioInline3">DH</label>
+        <input type="checkbox" id="customRadioInline3Filter" onclick="setButtons2('customRadioInline3Filter')" name="hochschule" value="DH" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline3Filter">DH</label>
       </div>
       <div class="custom-control custom-control-inline">
-        <input type="checkbox" id="customRadioInline4" onclick="setButtons2('customRadioInline4')" name="hochschule2" value="THM" class="custom-control-input">
-        <label class="custom-control-label" for="customRadioInline4">THM</label>
+        <input type="checkbox" id="customRadioInline4Filter" onclick="setButtons2('customRadioInline4Filter')" name="hochschule" value="THM" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline4Filter">THM</label>
       </div>
 
-      
 
       <div id="buttons">
-        <button onclick="TestAuslesen()" class="btn btn-primary">Student hinzufuegen</button>
+        <button id="buttonHinzufuegen" onclick="TestAuslesen()" class="btn btn-primary">Student hinzufügen</button>
       </div>
-
-
     </div>
-
-  </div>
-
+  
+    
+  
+    
   <p>
     <div id="ausgabe"></div>
   </p>

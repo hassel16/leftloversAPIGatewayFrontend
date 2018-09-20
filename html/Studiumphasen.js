@@ -114,7 +114,7 @@ function bearbeitungSpeichernJahrgang(number) {
         let jahrgangneu = auslesenUndJahrgangErzeugen();
         arrayJahrgang[number] = jahrgangneu;
         resetFormJahrgang();
-        $("#buttons").html("<button onclick='jahrgangHinzufuegen()' class='btn btn-primary'>Jahrgang hinzufuegen</button>" + " " + "<button onclick='phaseHinzufuegen' class='btn btn-primary'>Phase hinzufuegen</button>");
+        $("#buttons").html("<button onclick='phaseHinzufuegen' class='btn btn-primary'>Phase hinzufügen</button>" + " " + "<button onclick='jahrgangHinzufuegen()' class='btn btn-primary'>Jahrgang hinzufügen</button>");
         generiereStringForHTMLJahrgang();
     } else {
         alert("Fehlerhafte Eingabe! Bitte überprüfen!");
@@ -165,7 +165,7 @@ function bearbeitungSpeichernPhase(number) {
         let phase = auslesenUndPhaseErzeugen();
         arrayPhase[number] = phase;
         resetFormPhase();
-        $("#buttons").html("<button onclick='jahrgangHinzufuegen()' class='btn btn-primary'>Jahrgang hinzufuegen</button>" + " " + "<button onclick='phaseHinzufuegen' class='btn btn-primary'>Phase hinzufuegen</button>");
+        $("#buttons").html("<button onclick='phaseHinzufuegen' class='btn btn-primary'>Phase hinzufügen</button>" + " " + "<button onclick='jahrgangHinzufuegen()' class='btn btn-primary'>Jahrgang hinzufügen</button>");
         generiereStringForHTMLPhase();
     } else {
         alert("Fehlerhafte Eingabe! Bitte überprüfen!");
@@ -230,9 +230,9 @@ function generiereUebersichtstabelle() {
     let htmlAsString = "<table class='table table-bordered'> \
     <thead>\
       <tr> \
-        <th scope='col'>Schule</th>\
-        <th scope='col'>Studiengang</th>\
-        <th scope='col'>Jahrgang</th>";
+        <th scope='col'>HS</th>\
+        <th scope='col'>SG</th>\
+        <th scope='col'>JG</th>";
     //Speicher größte Anzahl Phasen eines Studiengangs
     let cacheSize = 0;
     for (let counter = 0; counter < arrayJahrgang.length; counter++) {
