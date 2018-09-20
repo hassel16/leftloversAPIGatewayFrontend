@@ -67,13 +67,12 @@ class Phase {
     }
 
     function saveInStorage() {
-        // $.post( "https://studentenuebersicht.herokuapp.com/storage/studiengang",arrayJahrgang );
-        $.post("http://127.0.0.1:8080/storage/studiengang", arrayJahrgang);
+         $.post( "https://studentenuebersicht.herokuapp.com/storage/studiengang",arrayJahrgang );
+        //$.post("http://127.0.0.1:8080/storage/studiengang", arrayJahrgang);
     }
 
     function getFromStorage() {
-        // $.post( "https://studentenuebersicht.herokuapp.com/storage/studiengang",arrayJahrgang );
-        jQuery.get("http://127.0.0.1:8080/storage/studiengang", function (data) {
+        jQuery.get("https://studentenuebersicht.herokuapp.com/storage/studiengang", function (data) {
             return data;
         });
     }
