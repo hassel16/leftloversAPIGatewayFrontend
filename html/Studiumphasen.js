@@ -73,7 +73,8 @@ class Phase {
 
     function getFromStorage() {
         jQuery.get("https://studentenuebersicht.herokuapp.com/storage/studiengang", function (data) {
-            return data;
+        alert(data);    
+        return data;
         });
     }
 
