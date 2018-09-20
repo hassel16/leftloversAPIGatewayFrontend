@@ -70,7 +70,7 @@ function jahrgangHinzufuegen() {
 function saveInStorage() {
     //$.post( "https://studentenuebersicht.herokuapp.com/storage/studiengang",arrayJahrgang );
     $.ajax({
-        url: 'http://127.0.0.1:8080/storage/studiengang',
+        url: 'https://studentenuebersicht.herokuapp.com/storage/studiengang',
         type: 'post',
         dataType: 'json',
         contentType: 'application/json',
@@ -82,7 +82,7 @@ function saveInStorage() {
 }
 
 function getFromStorage() {
-    jQuery.get("http://127.0.0.1:8080/storage/studiengang", function (data) {
+    jQuery.get("https://studentenuebersicht.herokuapp.com/storage/studiengang", function (data) {
         arrayJahrgang = data;
         generiereUebersichtstabelle();
         generiereStringForHTMLJahrgang();
